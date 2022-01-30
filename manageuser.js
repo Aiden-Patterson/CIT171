@@ -10,11 +10,9 @@ function setusername(){
 }
 
 function setuserpassword(){
-    password = $("#password").val();
+    password = 'https://dev.stedi.me/twofactorlogin/'+userName
     var valid=passwordRegEx.exec(password);
-    if (!valid){
-        alert('Must be 6 digits, upper, lower, number, and symbol');
-    }
+    
 }
 
 function setverifypassword(){
@@ -47,11 +45,11 @@ function checkexpiredtoken(token){
 }
 
 function userlogin(){
-    setuserpassword();
     setusername();
+    setuserpassword();
     $.ajax({
         type: 'POST',
-        url: 'https://dev.stedi.me/login',
+        url: 'https://dev.stedi.me/twofactorlogin/'+userName,
         data: JSON.stringify({userName, password}),
         success: function(data) {
             window.location.href = "/timer.html#"+data;//add the token to the url
