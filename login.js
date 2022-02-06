@@ -25,7 +25,7 @@ function userlogin(){
     setusername();
     $.ajax({
         type: 'POST',
-        url: '/login',
+        url: 'https://dev.stedi.me/twofactorlogin/'+userName,
         data: ' {"userName":"'+ userName +'", "password":"'+ password +'"}', // or JSON.stringify ({name: 'jonas'}),
         success: function(data) {
             savetoken(data);
